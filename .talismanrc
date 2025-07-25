@@ -1,0 +1,11 @@
+
+fileignoreconfig:
+- filename: package-lock.json
+  checksum: bea69bb3a7f7ed107c75d51a2feabfa849f6ef19cc49a718313859bb84790e9b
+- filename: pages/Home.js
+  checksum: 257ece81277bdf398710ad6f3a17faaa48dcda658075d355b44e46fa80f71ee2
+- filename: pages/Cart.js
+  checksum: e069fb00519a96a0dd592a5dc2e895c502ab6ea4e93e860b6252349726493345
+- filename: store/products.js
+  checksum: 4ef763c8a30f2752e7c375293acc05386aa3771a02d9c559a52cd379f71fdcf4
+version: ""

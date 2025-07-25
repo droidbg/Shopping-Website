@@ -99,6 +99,11 @@ header {
   margin-inline: auto;
 }
 
+.icon-container {
+  display: flex;
+  gap: 16px;
+}
+
 .searchbar {
   flex-grow: 1;
   display: flex;
@@ -168,11 +173,11 @@ form button {
   gap: 12px;
 }
 
-.cart-icon {
+.icon {
   position: relative;
 }
 
-.cart-items-count {
+.items-count {
   position: absolute;
   font-size: 12px;
   background-color: black;
