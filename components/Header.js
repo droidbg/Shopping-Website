@@ -5,10 +5,11 @@ import CartIcon from "url:../assets/cart.svg";
 import WishListIcon from "url:../assets/wishlist.svg";
 
 export default function Header() {
-  const cartItems = useSelector((state) => state.cartItems);
-  const cartCount = cartItems.reduce((prev, curr) => {
+  const state = useSelector((state) => state);
+  const cartCount = state.cartItems.reduce((prev, curr) => {
     return prev + curr.quantity;
   }, 0);
+  const wishListCount = state.wishList.length;
 
   return (
     <header>
@@ -19,7 +20,7 @@ export default function Header() {
         <div className="icon-container">
           <Link className="icon" to="/wishList">
             <img src={WishListIcon} alt="wishlist" width={32} />
-            <div className="items-count">0</div>
+            <div className="items-count">{wishListCount}</div>
           </Link>
           <Link className="icon" to="/cart">
             <img src={CartIcon} alt="cart" />
