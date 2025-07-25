@@ -1,6 +1,6 @@
 # Redux Practice Project
 
-A hands-on learning project to master Redux, React, and modern state management patterns. This project demonstrates core Redux concepts, custom implementations, and best practices, making it a strong addition to your portfolio.
+A hands-on learning project to master Redux, React, and modern state management patterns. This project demonstrates core Redux concepts, custom implementations, and best practices.
 
 ## Table of Contents
 
