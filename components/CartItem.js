@@ -17,7 +17,7 @@ export default function CartItem({
   return (
     <div className="cart-item-container">
       <div className="cart-item">
-        <img src={image} alt={title} />
+        <img src={image} alt={title} className="image-item" />
         <div>
           <h3>{title}</h3>
           <p>{rating} ★ ★ ★ ★</p>

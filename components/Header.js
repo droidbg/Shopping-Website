@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import CartIcon from "url:../assets/cart.svg";
+
 import WishListIcon from "url:../assets/wishlist.svg";
+import CartIcon from "url:../assets/cart.svg";
 
 export default function Header() {
   const state = useSelector((state) => state);

@@ -12,6 +12,9 @@ button {
   font-family: inherit;
   padding: 8px;
 }
+.app {
+  background-color: pink;
+}
 
 .products-container {
   max-width: 1200px;
@@ -29,8 +32,14 @@ button {
   transition: all 0.2s ease-in-out;
   display: inline-block;
   overflow: hidden;
-  border: 2px solid #898989;
+  border: 2px solid lightcoral;
   padding: 16px;
+}
+.image-item {
+  border: 2px solid black;
+  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .title-container {
@@ -92,7 +101,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 0 16px;
   gap: 24px;
   max-width: 1200px;
@@ -157,7 +165,7 @@ form button {
   border-radius: 15px;
   width: 40;
   font-size: larger;
-  background-color: pink;
+  background-color: cyan;
   font-family: cursive;
   padding: 1px;
   align-self: center;
