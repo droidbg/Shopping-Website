@@ -1,4 +1,4 @@
 fileignoreconfig:
-  - filename: pages/WishList.js
-    checksum: c8d278f84cdcbe1741688b1b445887d16ca66e80e20bb439bd0b435f6719d529
+- filename: pages/WishList.js
+  checksum: 5d70ec5cf9d4b5d6af2d6b2c0d6022b9775bc3a17d28361c9fb3d9f5d9c9b171
 version: ""

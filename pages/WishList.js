@@ -16,18 +16,16 @@ export default function WishList() {
           <div>Remove</div>
         </div>
         <div className="cart-header"></div>
-        {wishListItem.map(
-          ({ productId, title, rating, price, image, quantity }) => (
-            <WishListItem
-              key={productId}
-              productId={productId}
-              title={title}
-              image={image}
-              rating={rating.rate}
-              price={price}
-            />
-          )
-        )}
+        {wishListItem.map(({ productId, title, rating, price, image }) => (
+          <WishListItem
+            key={productId}
+            productId={productId}
+            title={title}
+            image={image}
+            rating={rating.rate}
+            price={price}
+          />
+        ))}
       </div>
     </div>
   );

@@ -26,6 +26,7 @@ export default function CartItem({
       <div className="item-price">${price}</div>
       <div className="item-quantity">
         <button
+          className="pink-button-cart"
           onClick={() => {
             dispatch(decreaseCartQuantity(productId));
           }}
@@ -34,6 +35,7 @@ export default function CartItem({
         </button>
         <span>{quantity}</span>
         <button
+          className="pink-button-cart"
           onClick={() => {
             dispatch(increaseCartQuantity(productId));
           }}

@@ -25,6 +25,7 @@ export default function WishListItem({
         onClick={() => {
           dispatch(removeWishListItem(productId));
         }}
+        className="blue-button"
       >
         Remove Item
       </button>

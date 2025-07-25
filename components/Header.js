@@ -18,13 +18,13 @@ export default function Header() {
           <Link to="/">Shopee</Link>
         </h1>
         <div className="icon-container">
-          <Link className="icon" to="/wishList">
-            <img src={WishListIcon} alt="wishlist" width={32} />
-            <div className="items-count">{wishListCount}</div>
-          </Link>
           <Link className="icon" to="/cart">
             <img src={CartIcon} alt="cart" />
             <div className="items-count">{cartCount}</div>
+          </Link>
+          <Link className="icon" to="/wishList">
+            <img src={WishListIcon} alt="wishlist" width={32} />
+            <div className="items-count">{wishListCount}</div>
           </Link>
         </div>
       </div>
