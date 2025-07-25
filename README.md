@@ -105,4 +105,4 @@ redux-practice/
 
 ---
 
-> _This project is a showcase of Redux mastery, custom state management, and clean React architecture. Perfect for demonstrating your frontend skills!_
+> _This project is a showcase of Redux mastery, custom state management, and clean React architecture_
