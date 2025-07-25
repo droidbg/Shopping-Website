@@ -105,10 +105,6 @@ redux-practice/
    ```
 4. Open [http://localhost:1234](http://localhost:1234) in your browser.
 
-## Screenshots
-
-_Add screenshots of the Home, Cart, and WishList pages here to showcase the UI._
-
 ---
 
 > _This project is a showcase of Redux mastery, custom state management, and clean React architecture. Perfect for demonstrating your frontend skills!_
