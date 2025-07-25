@@ -19,6 +19,17 @@ A hands-on learning project to master Redux, React, and modern state management 
 
 This project is a comprehensive exploration of Redux and state management in React. It covers everything from basic reducers to advanced patterns like the DUCK pattern and custom Redux store implementations. The app simulates a simple e-commerce experience with product listing, cart, and wishlist functionality.
 
+## About the Website
+
+This website is a demo e-commerce platform that showcases a variety of products. Users can:
+
+- Browse a list of products with detailed information
+- Add products to their cart or wishlist
+- Remove products from the cart or wishlist
+- Adjust product quantities in the cart
+
+All these features are powered by Redux for robust and predictable state management, ensuring a seamless and responsive user experience.
+
 ## Features
 
 - Product listing with detailed information
