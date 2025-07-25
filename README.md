@@ -109,12 +109,6 @@ redux-practice/
 
 _Add screenshots of the Home, Cart, and WishList pages here to showcase the UI._
 
-## Author
-
-- **Your Name**
-- [Your LinkedIn](#)
-- [Your Portfolio](#)
-
 ---
 
 > _This project is a showcase of Redux mastery, custom state management, and clean React architecture. Perfect for demonstrating your frontend skills!_
