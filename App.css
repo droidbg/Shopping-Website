@@ -129,6 +129,15 @@ form button {
   margin: 0;
 }
 
+.wishlist-container {
+  max-width: max-content;
+  margin-inline: auto;
+}
+.wishlist-container h2 {
+  text-align: center;
+  margin: 32px 0;
+}
+
 .cart-container {
   max-width: 1200px;
   margin-inline: auto;
