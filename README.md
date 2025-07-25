@@ -10,8 +10,6 @@ A hands-on learning project to master Redux, React, and modern state management 
 - [Project Structure](#project-structure)
 - [Tech Stack](#tech-stack)
 - [How to Run](#how-to-run)
-- [Screenshots](#screenshots)
-- [Author](#author)
 
 ---
 
