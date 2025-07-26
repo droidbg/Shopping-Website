@@ -1,6 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import CartItem from "../components/CartItem";
+import { useSelector } from "../react-redux";
 import WishListItem from "../components/WishListItem";
 
 export default function WishList() {
