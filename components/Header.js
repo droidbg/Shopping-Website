@@ -7,6 +7,7 @@ import CartIcon from "url:../assets/cart.svg";
 
 export default function Header() {
   const state = useSelector((state) => state);
+
   const cartCount = state.cartItems.reduce((prev, curr) => {
     return prev + curr.quantity;
   }, 0);

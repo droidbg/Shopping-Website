@@ -23,7 +23,14 @@ export default function Products({ id, title, rating, price, image }) {
           className="pink-button"
           onClick={() => {
             dispatch(
-              addCartItem({ productId: id, title, rating, price, image })
+              addCartItem({
+                productId: id,
+                title,
+                rating,
+                price,
+                image,
+                quantity: 1,
+              })
             );
           }}
         >

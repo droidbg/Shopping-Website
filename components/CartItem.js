@@ -28,7 +28,7 @@ export default function CartItem({
         <button
           className="pink-button-cart"
           onClick={() => {
-            dispatch(decreaseCartQuantity(productId));
+            dispatch(decreaseCartQuantity({ productId }));
           }}
         >
           -
@@ -37,7 +37,7 @@ export default function CartItem({
         <button
           className="pink-button-cart"
           onClick={() => {
-            dispatch(increaseCartQuantity(productId));
+            dispatch(increaseCartQuantity({ productId }));
           }}
         >
           +

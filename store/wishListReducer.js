@@ -1,34 +1,38 @@
-import { produce } from "immer";
+import { createSlice } from "@reduxjs/toolkit";
+/**
+ * Redux toolkit create action type, action creators and reducers automatically for us
+ * via createSlice method, it also immutable object creation and updation automatically via immer (we dont need to install immer manually or use produce method)
+ */
 
-// Action Types
-const WISHLIST_ADDITEM = "wishList/addItem";
-const WISHLIST_REMOVEITEM = "wishList/removeItem";
+const findItemIndex = (state, action) => {
+  const elementIndex = state.findIndex(
+    (wishListItem) => wishListItem.productId === action.payload.productId
+  );
+  return elementIndex;
+};
 
-// Action Creator
-export function addWishListItem(productData) {
-  return { type: WISHLIST_ADDITEM, payload: { ...productData } };
-}
-
-export function removeWishListItem(productId) {
-  return { type: WISHLIST_REMOVEITEM, payload: { productId } };
-}
-
-export default function wishListReducer(originalState = [], action) {
-  return produce(originalState, (state) => {
-    const elementIndex = state.findIndex(
-      (wishListItem) => wishListItem.productId === action.payload.productId
-    );
-    switch (action.type) {
-      case WISHLIST_ADDITEM:
-        if (elementIndex != -1) {
-          break;
-        }
+const slice = createSlice({
+  name: "wishList",
+  initialState: [],
+  reducers: {
+    addWishListItem(state, action) {
+      const elementIndex = findItemIndex(state, action);
+      if (elementIndex === -1) {
         state.push(action.payload);
-        break;
+      }
+    },
+    removeWishListItem(state, action) {
+      // console.log(action);
+      const elementIndex = findItemIndex(state, action);
+      elementIndex != -1 && state.splice(elementIndex, 1);
+    },
+  },
+});
 
-      case WISHLIST_REMOVEITEM:
-        state.splice(elementIndex, 1);
-    }
-    return state;
-  });
-}
+export default slice.reducer;
+
+export const { addWishListItem, removeWishListItem } = slice.actions;
+
+// console.dir(addWishListItem);
+// console.dir(addWishListItem.type);
+// console.log(addWishListItem.toString());
