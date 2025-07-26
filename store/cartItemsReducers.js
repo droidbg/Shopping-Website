@@ -1,3 +1,7 @@
+/**
+ * DUCK Pattern
+ */
+
 // Action Types
 
 const CART_ADDITEM = "cart/addItem";

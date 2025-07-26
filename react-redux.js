@@ -9,7 +9,6 @@ export function Provider({ store, children }) {
   const [state, setState] = useState(store.getState());
   useEffect(() => {
     store.subscribe(() => {
-      console.log("In Subscribe");
       setState(store.getState());
     });
   }, []);
