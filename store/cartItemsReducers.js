@@ -2,6 +2,8 @@
  * DUCK Pattern
  */
 
+import { produce } from "immer";
+
 // Action Types
 
 const CART_ADDITEM = "cart/addItem";
@@ -25,46 +27,34 @@ export function decreaseCartQuantity(productId) {
   return { type: CART_DECREASE_ITEM_QUANTITY, payload: { productId } };
 }
 
-export default function cartItemsReducer(state = [], action) {
-  switch (action.type) {
-    case CART_ADDITEM:
-      const elementFound = state.find(
-        (cartItem) => cartItem.productId === action.payload.productId
-      );
-      if (elementFound) {
-        return state.map((cartItem) => {
-          if (cartItem.productId === action.payload.productId) {
-            return { ...cartItem, quantity: cartItem.quantity + 1 };
-          } else return cartItem;
-        });
-      }
-
-      return [...state, action.payload];
-
-    case CART_REMOVEITEM:
-      return state.filter(
-        (cartItem) => cartItem.productId != action.payload.productId
-      );
-
-    case CART_INCREASE_ITEM_QUANTITY:
-      return state.map((cartItem) => {
-        if (cartItem.productId === action.payload.productId) {
-          return { ...cartItem, quantity: cartItem.quantity + 1 };
+export default function cartItemsReducer(originalState = [], action) {
+  return produce(originalState, (state) => {
+    const elementIndex = state.findIndex((cartItem) => {
+      return cartItem.productId === action.payload.productId;
+    });
+    switch (action.type) {
+      case CART_ADDITEM:
+        if (elementIndex !== -1) {
+          // Element found (index is not -1 , means some index is there)
+          state[elementIndex].quantity += 1;
+          break;
         }
-        return cartItem;
-      });
+        state.push(action.payload);
+        break;
 
-    case CART_DECREASE_ITEM_QUANTITY:
-      return state
-        .map((cartItem) => {
-          if (cartItem.productId === action.payload.productId) {
-            return { ...cartItem, quantity: cartItem.quantity - 1 };
-          }
-          return cartItem;
-        })
-        .filter((cartItem) => cartItem.quantity > 0);
+      case CART_REMOVEITEM:
+        state.splice(elementIndex, 1);
+        break;
+      case CART_INCREASE_ITEM_QUANTITY:
+        state[elementIndex].quantity += 1;
+        break;
 
-    default:
-      return state;
-  }
+      case CART_DECREASE_ITEM_QUANTITY:
+        state[elementIndex].quantity -= 1;
+        if (state[elementIndex].quantity <= 0) {
+          state.splice(elementIndex, 1);
+        }
+    }
+    return state;
+  });
 }

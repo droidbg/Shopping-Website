@@ -1,3 +1,5 @@
+import { produce } from "immer";
+
 // Action Types
 const WISHLIST_ADDITEM = "wishList/addItem";
 const WISHLIST_REMOVEITEM = "wishList/removeItem";
@@ -11,24 +13,22 @@ export function removeWishListItem(productId) {
   return { type: WISHLIST_REMOVEITEM, payload: { productId } };
 }
 
-export default function wishListReducer(state = [], action) {
-  switch (action.type) {
-    case WISHLIST_ADDITEM:
-      const elementFound = state.find(
-        (wishListItem) => wishListItem.productId === action.payload.productId
-      );
-      if (elementFound) {
-        return state;
-      }
+export default function wishListReducer(originalState = [], action) {
+  return produce(originalState, (state) => {
+    const elementIndex = state.findIndex(
+      (wishListItem) => wishListItem.productId === action.payload.productId
+    );
+    switch (action.type) {
+      case WISHLIST_ADDITEM:
+        if (elementIndex != -1) {
+          break;
+        }
+        state.push(action.payload);
+        break;
 
-      return [...state, action.payload];
-
-    case WISHLIST_REMOVEITEM:
-      return state.filter(
-        (wishListItem) => wishListItem.productId != action.payload.productId
-      );
-
-    default:
-      return state;
-  }
+      case WISHLIST_REMOVEITEM:
+        state.splice(elementIndex, 1);
+    }
+    return state;
+  });
 }
