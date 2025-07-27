@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "../react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import WishListIcon from "url:../assets/wishlist.svg";

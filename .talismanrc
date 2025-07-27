@@ -1,4 +1,4 @@
 fileignoreconfig:
-- filename: script6.js
-  checksum: 82acdb8388b8c1fecc3693dbba6c96a6098f7d444a703a3d0e1c0fa819d84850
+  - filename: package-lock.json
+    checksum: 531a6f8c79e45ef0b5858eac3eb6dd6a10cb0cacf8dbec1c0aa96b353bf628c4
 version: ""
