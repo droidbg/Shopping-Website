@@ -1,12 +1,34 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import WishListIcon from "url:../assets/wishlist.svg";
 import CartIcon from "url:../assets/cart.svg";
+import {
+  addAllProducts,
+  setLoadingState,
+  setError,
+} from "../store/productReducer";
 
 export default function Header() {
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setLoadingState());
+    fetch("https://fakedataapi.vercel.app/api/products")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        dispatch(addAllProducts(data));
+      })
+      .catch((e) => {
+        dispatch(setError());
+      });
+  }, []);
 
   const cartCount = state.cartItems.reduce((prev, curr) => {
     return prev + curr.quantity;
