@@ -11,7 +11,8 @@ import {
 } from "../store/product.slice";
 
 export default function Header() {
-  const state = useSelector((state) => state);
+  const cartItems = useSelector((state) => state.cartItems);
+  const wishList = useSelector((state) => state.wishList);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLoadingState());
@@ -30,10 +31,10 @@ export default function Header() {
       });
   }, []);
 
-  const cartCount = state.cartItems.cartList.reduce((prev, curr) => {
+  const cartCount = cartItems.cartList.reduce((prev, curr) => {
     return prev + curr.quantity;
   }, 0);
-  const wishListCount = state.wishList.length;
+  const wishListCount = wishList.length;
 
   return (
     <header>

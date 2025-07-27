@@ -1,4 +1,4 @@
 fileignoreconfig:
-  - filename: package-lock.json
-    checksum: 531a6f8c79e45ef0b5858eac3eb6dd6a10cb0cacf8dbec1c0aa96b353bf628c4
+- filename: pages/Home.js
+  checksum: 9c5150e19271bf150f2bc03ab5f6723075853d11a1566a57f803ed5f1fd142a2
 version: ""
