@@ -27,7 +27,7 @@ const slice = createSlice({
       state.isLoading = true;
       state.error = "";
     },
-    setError(state) {
+    setCartError(state) {
       state.isLoading = false;
       state.error = "Something went wrong";
     },
@@ -63,7 +63,7 @@ export default slice.reducer;
 export const {
   loadAllCartItems,
   setCartLoadingState,
-  setError,
+  setCartError,
   addCartItem,
   removeCartItem,
   increaseCartQuantity,
