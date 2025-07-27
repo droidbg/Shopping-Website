@@ -44,7 +44,6 @@ export default function Header() {
         return res.json();
       })
       .then((data) => {
-        console.log(data.products);
         dispatch(loadAllCartItems(data.products));
       })
       .catch((e) => {
