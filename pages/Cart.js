@@ -17,37 +17,44 @@ export default function Cart() {
   const totalCost = cartItems.reduce((prev, current) => {
     return prev + current.quantity * current.price;
   }, 0);
+  const { isLoading, error } = useSelector((state) => state.cartItems);
 
   return (
     <div className="cart-container">
       <h2>Items in Your Cart</h2>
-      <div className="cart-items-container">
-        <div className="cart-header cart-item-container">
-          <div className="cart-item">Item</div>
-          <div className="item-price">Price</div>
-          <div className="quantity">Quantity</div>
-          <div className="total">Total</div>
+      {isLoading ? (
+        <h1 style={{ textAlign: "center" }}>Loading... </h1>
+      ) : error ? (
+        <h1 style={{ textAlign: "center" }}> {error}</h1>
+      ) : (
+        <div className="cart-items-container">
+          <div className="cart-header cart-item-container">
+            <div className="cart-item">Item</div>
+            <div className="item-price">Price</div>
+            <div className="quantity">Quantity</div>
+            <div className="total">Total</div>
+          </div>
+          {cartItems.map(
+            ({ id, productId, title, rating, price, image, quantity }) => (
+              <CartItem
+                key={productId || id}
+                productId={productId || id}
+                title={title}
+                price={price}
+                quantity={quantity}
+                image={image}
+                rating={rating.rate}
+              />
+            )
+          )}
+          <div className="cart-header cart-item-container">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div className="total">${totalCost}</div>
+          </div>
         </div>
-        {cartItems.map(
-          ({ id, productId, title, rating, price, image, quantity }) => (
-            <CartItem
-              key={productId || id}
-              productId={productId || id}
-              title={title}
-              price={price}
-              quantity={quantity}
-              image={image}
-              rating={rating.rate}
-            />
-          )
-        )}
-        <div className="cart-header cart-item-container">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div className="total">${totalCost}</div>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
