@@ -1,4 +1,7 @@
-// This script is to practice map, filter, reduce
+/**
+ * ! This script is to practice map, filter, reduce
+ *
+ */
 
 // const students = [
 //   { name: "Alya Albora", age: 30 },

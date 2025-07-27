@@ -1,12 +1,12 @@
 /**
- *  This file includes the following topics:
+ *  ! This file includes the following topics:
  * 1. Currying
  * 2. Infinite Currying
  * 3. Reusability
  * 4. Partial Application
  * 5. Currying vs Partial Application
  * 6. Using the bind to achieve the same
- * 
+ *
  * Currying is a technique of evaluating function with multiple arguments, into sequence of function with single argument.
  *
  * * Example Use Cases:
