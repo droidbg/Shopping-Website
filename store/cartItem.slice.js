@@ -12,30 +12,34 @@ const findElement = (state, action) => {
 
 const slice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState: {
+    isLoading: false,
+    cartList: [],
+    error: "",
+  },
   reducers: {
     addCartItem(state, action) {
-      const elementIndex = findElement(state, action);
+      const elementIndex = findElement(state.cartList, action);
       if (elementIndex === -1) {
         // Element not found so add it
-        state.push(action.payload);
+        state.cartList.push(action.payload);
       } else {
-        state[elementIndex].quantity += 1;
+        state.cartList[elementIndex].quantity += 1;
       }
     },
     removeCartItem(state, action) {
-      const elementIndex = findElement(state, action);
-      elementIndex != -1 && state.splice(elementIndex, 1);
+      const elementIndex = findElement(state.cartList, action);
+      elementIndex != -1 && state.cartList.splice(elementIndex, 1);
     },
     increaseCartQuantity(state, action) {
-      const elementIndex = findElement(state, action);
-      state[elementIndex].quantity += 1;
+      const elementIndex = findElement(state.cartList, action);
+      state.cartList[elementIndex].quantity += 1;
     },
     decreaseCartQuantity(state, action) {
-      const elementIndex = findElement(state, action);
-      state[elementIndex].quantity -= 1;
-      if (state[elementIndex].quantity <= 0) {
-        state.splice(elementIndex, 1);
+      const elementIndex = findElement(state.cartList, action);
+      state.cartList[elementIndex].quantity -= 1;
+      if (state.cartList[elementIndex].quantity <= 0) {
+        state.cartList.splice(elementIndex, 1);
       }
     },
   },

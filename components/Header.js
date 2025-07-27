@@ -30,7 +30,7 @@ export default function Header() {
       });
   }, []);
 
-  const cartCount = state.cartItems.reduce((prev, curr) => {
+  const cartCount = state.cartItems.cartList.reduce((prev, curr) => {
     return prev + curr.quantity;
   }, 0);
   const wishListCount = state.wishList.length;
