@@ -1,6 +1,6 @@
-import wishListReducer from "./wishListReducer";
-import cartItemsReducer from "./cartItemsReducers";
-import productReducer from "./productReducer";
+import wishListReducer from "./wishList.slice";
+import cartItemsReducer from "./cartItem.slice";
+import productReducer from "./product.slice";
 import { configureStore } from "@reduxjs/toolkit";
 import { logger } from "../middleware/logger";
 

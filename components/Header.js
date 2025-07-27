@@ -8,7 +8,7 @@ import {
   addAllProducts,
   setLoadingState,
   setError,
-} from "../store/productReducer";
+} from "../store/product.slice";
 
 export default function Header() {
   const state = useSelector((state) => state);
