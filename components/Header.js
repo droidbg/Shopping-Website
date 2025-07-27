@@ -9,6 +9,7 @@ import {
   setLoadingState,
   setError,
 } from "../store/product.slice";
+import { loadAllCartItems, setCartLoadingState } from "../store/cartItem.slice";
 
 export default function Header() {
   const cartItems = useSelector((state) => state.cartItems);
@@ -29,6 +30,19 @@ export default function Header() {
       .catch((e) => {
         dispatch(setError());
       });
+    dispatch(setCartLoadingState());
+    fetch("https://fakedataapi.vercel.app/api/carts")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.products);
+        dispatch(loadAllCartItems(data.products));
+      });
+    // dispatch(loadAllCartItems());
   }, []);
 
   const cartCount = cartItems.cartList.reduce((prev, curr) => {

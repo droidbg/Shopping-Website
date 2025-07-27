@@ -3,12 +3,20 @@ import CartItem from "../components/CartItem";
 import { useSelector } from "react-redux";
 
 export default function Cart() {
-  const cartItems = useSelector((state) => state.cartItems);
-  // console.log(cartItems);
-  const totalCost = cartItems.cartList.reduce((prev, current) => {
+  const cartItems = useSelector(({ products, cartItems }) => {
+    return cartItems.cartList
+      .map(({ productId, quantity }) => {
+        const cartProduct = products.list.find(
+          (product) => product.id === productId
+        );
+        return { ...cartProduct, quantity };
+      })
+      .filter(({ title }) => title);
+  });
+
+  const totalCost = cartItems.reduce((prev, current) => {
     return prev + current.quantity * current.price;
   }, 0);
-  // console.log(totalCost);
 
   return (
     <div className="cart-container">
@@ -20,11 +28,11 @@ export default function Cart() {
           <div className="quantity">Quantity</div>
           <div className="total">Total</div>
         </div>
-        {cartItems.cartList.map(
-          ({ productId, title, rating, price, image, quantity }) => (
+        {cartItems.map(
+          ({ id, productId, title, rating, price, image, quantity }) => (
             <CartItem
-              key={productId}
-              productId={productId}
+              key={productId || id}
+              productId={productId || id}
               title={title}
               price={price}
               quantity={quantity}

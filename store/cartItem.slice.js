@@ -18,6 +18,19 @@ const slice = createSlice({
     error: "",
   },
   reducers: {
+    loadAllCartItems(state, action) {
+      state.isLoading = false;
+      state.cartList = action.payload;
+      state.error = "";
+    },
+    setCartLoadingState(state) {
+      state.isLoading = true;
+      state.error = "";
+    },
+    setError(state) {
+      state.isLoading = false;
+      state.error = "Something went wrong";
+    },
     addCartItem(state, action) {
       const elementIndex = findElement(state.cartList, action);
       if (elementIndex === -1) {
@@ -48,6 +61,9 @@ const slice = createSlice({
 export default slice.reducer;
 
 export const {
+  loadAllCartItems,
+  setCartLoadingState,
+  setError,
   addCartItem,
   removeCartItem,
   increaseCartQuantity,
