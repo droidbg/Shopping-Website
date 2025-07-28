@@ -43,7 +43,7 @@ export default function CartItem({
           +
         </button>
       </div>
-      <div className="item-total">${quantity * price}</div>
+      <div className="item-total">${(quantity * price).toFixed(2)}</div>
     </div>
   );
 }

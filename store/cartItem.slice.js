@@ -2,7 +2,7 @@
  * DUCK Pattern
  */
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const findElement = (state, action) => {
   return state.findIndex((cartItem) => {
@@ -57,6 +57,32 @@ const slice = createSlice({
     },
   },
 });
+
+// * Selectors
+// A "selector" is any function that accepts the Redux state tree as an argument, and returns some extracted or derived data. That includes plain functions like you showed.
+
+// In many cases, you want to memoize the calculation of the results, such as mapping over an array of items, so that it's not re-calculated unless the inputs have changed. Reselect's createSelector creates memoized selector functions that only recalculate the output if the inputs change.
+
+export const getCartLoadingState = (state) => state.cartItems.isLoading;
+export const getCartErrorState = (state) => state.cartItems.error;
+
+const getCartDetailsFromProducts = ({ products, cartItems }) => {
+  return cartItems.cartList
+    .map(({ productId, quantity }) => {
+      const cartProduct = products.list.find(
+        (product) => product.id === productId
+      );
+      return { ...cartProduct, quantity };
+    })
+    .filter(({ title }) => title);
+};
+
+// * Selectors created for memoization using createSelector
+
+export const getAllCartItems = createSelector(
+  (cartItem) => cartItem,
+  getCartDetailsFromProducts
+);
 
 export default slice.reducer;
 

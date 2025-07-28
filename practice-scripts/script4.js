@@ -8,7 +8,7 @@
  * 6. Using the bind to achieve the same
  *
  * Currying is a technique of evaluating function with multiple arguments, into sequence of function with single argument.
- *
+ * It is also used in Redux middleware 
  * * Example Use Cases:
  * 1. Customable Logging:
 const log = level => message => console.log(`[${level}] ${message}`);
