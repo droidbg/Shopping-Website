@@ -6,49 +6,38 @@ import WishListIcon from "url:../assets/wishlist.svg";
 import CartIcon from "url:../assets/cart.svg";
 import {
   addAllProducts,
-  setLoadingState,
-  setError,
+  setProductLoadingState,
+  setProductError,
 } from "../store/product.slice";
 import {
   loadAllCartItems,
   setCartError,
   setCartLoadingState,
 } from "../store/cartItem.slice";
+import { makeApiCall } from "../middleware/api";
 
 export default function Header() {
   const cartItems = useSelector((state) => state.cartItems);
   const wishList = useSelector((state) => state.wishList);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setLoadingState());
-    fetch("https://fakedataapi.vercel.app/api/products")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        return res.json();
+    dispatch(
+      makeApiCall({
+        endpoint: "api/products",
+        onStart: setProductLoadingState.type,
+        onError: setProductError.type,
+        onSuccess: addAllProducts.type,
       })
-      .then((data) => {
-        dispatch(addAllProducts(data));
-      })
-      .catch((e) => {
-        dispatch(setError());
-      });
+    );
 
-    dispatch(setCartLoadingState());
-    fetch("https://fakedataapi.vercel.app/api/carts")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        return res.json();
+    dispatch(
+      makeApiCall({
+        endpoint: "api/carts",
+        onStart: setCartLoadingState.type,
+        onError: setCartError.type,
+        onSuccess: loadAllCartItems.type,
       })
-      .then((data) => {
-        dispatch(loadAllCartItems(data.products));
-      })
-      .catch((e) => {
-        dispatch(setCartError());
-      });
+    );
   }, []);
 
   const cartCount = cartItems.cartList.reduce((prev, curr) => {

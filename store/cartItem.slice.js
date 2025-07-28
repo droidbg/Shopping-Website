@@ -20,7 +20,7 @@ const slice = createSlice({
   reducers: {
     loadAllCartItems(state, action) {
       state.isLoading = false;
-      state.cartList = action.payload;
+      state.cartList = action.payload.products;
       state.error = "";
     },
     setCartLoadingState(state) {

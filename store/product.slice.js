@@ -8,7 +8,7 @@ const slice = createSlice({
     error: "",
   },
   reducers: {
-    setLoadingState(state) {
+    setProductLoadingState(state) {
       state.isLoading = true;
       state.error = "";
     },
@@ -17,7 +17,7 @@ const slice = createSlice({
       state.list = action.payload;
       state.error = "";
     },
-    setError(state) {
+    setProductError(state) {
       state.isLoading = false;
       state.error = "Something Went Wrong";
     },
@@ -32,4 +32,5 @@ export const getProductErrorState = (state) => state.products.error;
 
 export default slice.reducer;
 
-export const { addAllProducts, setLoadingState, setError } = slice.actions;
+export const { addAllProducts, setProductLoadingState, setProductError } =
+  slice.actions;
